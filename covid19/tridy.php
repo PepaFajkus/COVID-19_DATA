@@ -21,12 +21,10 @@ public $url = "https://api.apify.com/v2/key-value-stores/qAEsnylzdjhCCyZeS/recor
         return $infected;
     }
 
-    public function sex_infected()
+    public function sex_infected($boolean)
     {
         $data = file_get_contents($this->url); // získá nám obsah API
         $data_to_array = json_decode($data); // dekoduje javascript, abychom s ním mohli pracovat v PHP
-
-        $switcher = true;
 
         $male_infected = 0;
         $female_infected = 0;
@@ -49,15 +47,15 @@ public $url = "https://api.apify.com/v2/key-value-stores/qAEsnylzdjhCCyZeS/recor
 
         }
 
-        if ($switcher == true ) {
-            return $male_infected . " mužů";
-        } elseif ($switcher == false) {
-            return $female_infected . " žen";
+        if ($boolean == true ) {
+            return $male_infected;
+        } elseif ($boolean == false) {
+            return $female_infected;
         }
 
     }
 
-    public function average_age()
+    public function average_age ()
     {
         $data = file_get_contents($this->url); // získá nám obsah API
         $data_to_array = json_decode($data); // dekoduje javascript, abychom s ním mohli pracovat v PHP
